@@ -1,5 +1,6 @@
 # DeepRuby
 A rubik solver that uses machine learning and she may be smart!
+
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/caominhduy/DeepRuby/blob/master/LICENSE.txt)
 
 ## Versioning
