@@ -8,11 +8,12 @@ from datetime import datetime
 from dependencies import *
 from basics import *
 import random as rd
+from time import time
 
 __author__ = 'Duy Cao'
 __version__ = '2020.4.30'
 
-TEST_DATASET_SIZE = 1000000
+TEST_DATASET_SIZE = 100000
 AVAILABLE_ROTATIONS = ['l', 'u', 'r', 'b', 'f', 'd',
                         'l2', 'u2', 'r2', 'b2', 'f2', 'd2',
                         'lr', 'ur', 'rr', 'br', 'fr', 'dr',]
@@ -34,7 +35,7 @@ def touch(path, filename): # path = 'test' or 'train'
         f = open('datasets/' + path + '/' + filename + '.csv', 'x')
         f.close()
 
-def generator(filename):
+def generator(filename): # rotating randomly and write into dataset
     cube = init_cube(RUBIK_SIZE)
     path = 'datasets/test/' + filename + '.csv'
     with open(path, 'w', newline='') as dataset:
@@ -46,8 +47,10 @@ def generator(filename):
             generator.writerow(row)
 
 def _main():
+    start = time()
     filename = datetime_()
     touch('test', filename)
     generator(filename)
+    print("Done! \nTime elapsed = " + str(round((time() - start), 3)) + " seconds")
 
 _main()

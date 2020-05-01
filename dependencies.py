@@ -1,4 +1,4 @@
-""" This contains little supporting functions. """
+""" This contains supporting functions. """
 
 import tensorflow as tf
 import numpy as np
