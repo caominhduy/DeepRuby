@@ -6,7 +6,7 @@ A rubik solver that uses machine learning and she may be smart!
 
 
 ## Versioning
-For the versions available, see the tags on this repository.
+For the versions available, see module's [\__version__](https://www.python.org/dev/peps/pep-0396/)
 
 ## Author
 * **Duy Cao** - [caominhduy](https://github.com/caominhduy/)
