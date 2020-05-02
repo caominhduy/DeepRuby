@@ -6,12 +6,16 @@ A rubik solver that uses machine learning and she may be smart!
 
 ## Getting Started
 Here you will find the answers to the questions What, Which, Why, and How to install this project on your local machine (and avoid unnecessary panic and scream.)
+
 ###Prerequisites
 DeepRuby requires you to install TensorFlow, NumPy – if you have not.
+
 To install:
   * [TensorFlow](https://www.tensorflow.org/install/pip)
   * [NumPy](https://scipy.org/install.html)
+
 Notice that this entire project is written in Linux environment with Python 3.7.1 and TensorFlow 2.1.0 installed, we have not tested its compatibility for different environments.
+
 ###Installing
 To clone the latest version of this project
 ```
