@@ -8,9 +8,9 @@ from dependencies import *
 from colorama import Fore, Back, Style
 
 __author__ = 'Duy Cao'
-__version__ = '20.4.30'
+__version__ = '20.5.3'
 
-RUBIK_SIZE = 3  # means 2x2x2 rubik cube, modify this to change the size
+RUBIK_SIZE = 2  # means 2x2x2 rubik cube, modify this to change the size
 
 def total_combinations(x):  # We assume that there is no rubik cube with size <= 1
     a = math.factorial(7)*3**6
@@ -154,7 +154,46 @@ def turn(x, rubik):  # including 18 basic rotations of a rubik cube
             turn('r',rubik)
     return rubik
 
-def _main():
+def rotating_notations(x):
+    if x == 'l':
+        return 'left'
+    if x == 'r':
+        return 'right'
+    if x == 'u':
+        return 'top'
+    if x == 'd':
+        return 'bottom'
+    if x == 'f':
+        return 'front'
+    if x == 'b':
+        return 'back'
+    if x == 'lr':
+        return 'left-reversed'
+    if x == 'rr':
+        return 'right-reversed'
+    if x == 'ur':
+        return 'top-reversed'
+    if x == 'dr':
+        return 'bottom-reversed'
+    if x == 'fr':
+        return 'front-reversed'
+    if x == 'br':
+        return 'back-reversed'
+    if x == 'l2':
+        return 'left-twice'
+    if x == 'r2':
+        return 'right-twice'
+    if x == 'u2':
+        return 'top-twice'
+    if x == 'd2':
+        return 'bottom-twice'
+    if x == 'f2':
+        return 'front-twice'
+    if x == 'b2':
+        return 'back-twice'
+
+
+def _test():
     x=total_combinations(RUBIK_SIZE)
     print('There are total ' + str(x) + ' combinations!')
     #y = init_cube(RUBIK_SIZE)
@@ -167,3 +206,6 @@ def _main():
     #visualizer(after, RUBIK_SIZE)
     y = rubik_to_array(after, RUBIK_SIZE)[4]
     print(type(y))
+
+if __name__ == '__main__':
+    _test()
