@@ -15,9 +15,9 @@ from shutil import copy as shucopy
 from test_dataset import *
 
 __author__ = 'Duy Cao'
-__version__ = '2020.5.3'
+__version__ = '2020.5.5'
 
-TRAIN_DATASET_SIZE = 100000 # THE LARGER, THE BETTER (with a cost of time and memory)
+TRAIN_DATASET_SIZE = 10000 # THE LARGER, THE BETTER (with a cost of time and memory)
 
 def training_generator(path, path2, filename): # rotating randomly & write combinations into dataset
     touch(path, path2, filename)
@@ -39,5 +39,5 @@ if __name__ == '__main__':
     dir2 = str(RUBIK_SIZE)
     training_generator(dir, dir2, filename)
     print("Done! \nTime elapsed = " + str(round((time() - start), 3)) + " seconds")
-    duplicates = duplicate_removal(dir, dir2, filename)
+    duplicates = duplicate_removal_v2(dir, dir2, filename, RUBIK_SIZE)
     print(str(duplicates) + " duplicates were automatically removed.")

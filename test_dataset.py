@@ -12,9 +12,9 @@ from time import time
 from shutil import copy as shucopy
 
 __author__ = 'Duy Cao'
-__version__ = '2020.5.3'
+__version__ = '2020.5.5'
 
-TEST_DATASET_SIZE = 100 # notice that the final dataset may be smaller
+TEST_DATASET_SIZE = 1000 # notice that the final dataset may be smaller
                          # after duplicate_removal
 AVAILABLE_ROTATIONS = ['l', 'u', 'r', 'b', 'f', 'd', \
                         'l2', 'u2', 'r2', 'b2', 'f2', 'd2', \
@@ -70,6 +70,25 @@ def duplicate_removal(path, path2, filename): # remove duplicate in datasets
     os.remove(new_path)
     return(counter)
 
+def duplicate_removal_v2(path, path2, filename, size): # check only combinations, not full row
+    old_path = 'datasets/' + path + '/' + path2 + '/' + filename + '.csv'
+    new_path = 'datasets/' + path + '/' + path2 + '/' + filename + '_cached.csv'
+    num_of_cols = size**2*6
+    shucopy(old_path, new_path)
+    os.remove(old_path)
+    touch(path, path2, filename)
+    with open(new_path, 'r') as clipboard, open (old_path, 'w') as final:
+        cached = set()
+        counter = 0
+        for line in clipboard:
+            if line[:num_of_cols] in cached:
+                counter+=1
+            if line[:num_of_cols] not in cached:
+                cached.add(line[:num_of_cols])
+                final.write(line)
+    os.remove(new_path)
+    return(counter)
+
 if __name__ == '__main__':
     start = time()
     filename = datetime_()
@@ -77,6 +96,6 @@ if __name__ == '__main__':
     dir2 = str(RUBIK_SIZE)
     generator(dir, dir2, filename)
     print("Done! \nTime elapsed = " + str(round((time() - start), 3)) + " seconds")
-    duplicates = duplicate_removal(dir, dir2, filename)
+    duplicates = duplicate_removal_v2(dir, dir2, filename, RUBIK_SIZE)
     print(str(duplicates) + "/" + str(TEST_DATASET_SIZE) + " were duplicates " + \
         "and automatically removed.")

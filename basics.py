@@ -31,19 +31,19 @@ def init_cube(x):
     return cube
     # We use Western Color Scheme: White(w), Red(r), Blue(b), Yellow(y), Green(g),
     # and Orange(o)
-    # A solved 2x2x2 rubik cube looks like this (front face is white):
-    #        ______
+    # A spread-out solved 2x2x2 rubik cube looks like this (front face is white - 'w'):
+    #       +-----+
     #       | b b |
     #       | b b |
-    # -------------------------
+    # +-----+-----+-----+-----+
     # | o o | w w | r r | y y |
     # | o o | w w | r r | y y |
-    # -------------------------
+    # +-----+-----+-----+-----+
     #       | g g |
     #       | g g |
-    #       -------
+    #       +-----+
 
-def _test_cube(x):  #RUBIK_SIZE must >= 3
+def _test_cube(x):  #RUBIK_SIZE must >= 3 (ONLY FOR TESTING)
     cube = init_cube(x)
     cube[0][0,1], cube[0][1,0], cube[0][1,2], cube[0][2,1] = 'g', 'g', 'g', 'g'
     cube[1][0,1], cube[1][1,0], cube[1][1,2], cube[1][2,1] = 'r', 'r', 'r', 'r'
