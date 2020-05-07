@@ -100,7 +100,7 @@ This module contains slighty less important functions.
 * `array_to_rubik` reverses it, but it is currently no longer in used.
 
 
-* `get_latest_file` lists all the file under specified directory, and returns path to the csv dataset file with largest number (for reason why largest number please see module `test_dataset.py`)
+* `get_latest_file` lists all the file under specified directory, and returns path to the csv dataset file with largest number (for reason why largest number please see module `test_dataset.py`.)
 
 ### **`test_dataset.py`**
 This module generates dataset for testing. Many functions are also applicable for `training_dataset.py`.
@@ -108,7 +108,7 @@ This module generates dataset for testing. Many functions are also applicable fo
 * `TEST_DATASET_SIZE` decides the dataset size (number of different states). The final dataset may be smaller than this value due to `duplicate_removal` or `duplicate_removal_v2`.
 
 
-* `datetime_` returns a string of current system time under format YYMMDDHrHrMinMin (in 24-hour format). This simplify the naming process because the lastest dataset now will always have largest number as its name and will be in use for training. (You can take advantage of this by renaming a dataset to time in the future or "9999999999.csv" for example for it to be used instantly for training).
+* `datetime_` returns a string of current system time under format YYMMDDHrHrMinMin (in 24-hour format). This simplify the naming process because the lastest dataset now will always have largest number as its name and will be in use for training. (You can take advantage of this by renaming a dataset to time in the future or "9999999999.csv" for example for it to be used instantly for training.)
 
 
 * `touch` consumes 3 parameters: **dataset type** (i.e. 'test' or 'train'), **RUBIK_SIZE**, and **csv filename**. It constructs the directories (if there haven't), and the dataset file to be written.
@@ -130,20 +130,35 @@ This module is very similar to previous module. Review `test_dataset.py` if need
 * `COLORS_DICT` is used for integer encoding of colors.
 
 
-* `ROTATIONAL_DICT` is used for integer encoding of `previous_move`
+* `ROTATIONAL_DICT` is used for integer encoding of `previous_move`.
 
 
-* `df_train` and `df_test` are Pandas dataframes for training and testing. They are integer-encoded, shuffle
+* `df_train` and `df_test` are Pandas dataframes for training and testing. They are integer-encoded, shuffle.
 
 
-* `y_train` and `y_test` are the last column in the dataset (used for labelling dataset in the pipeline to tensor, see `read_dataset_from_dataframe`)
+* `y_train` and `y_test` are the last column in the dataset (used for labelling dataset in the pipeline to tensor, see `read_dataset_from_dataframe`.)
 
 ![Screen-Shot-2020-05-07-at-8-32-41-AM](https://i.ibb.co/Nnbz6D4/Screen-Shot-2020-05-07-at-8-32-41-AM.png)
 
 _At this point, the training provides only approximately 10% of accuracy on test dataset. Improvements are on-the-way._
 
+## Running
+1. Modify `RUBIK_SIZE` in `basics.py`
+   ```
+    RUBIK_SIZE = 2 # example rubik 2x2x2
+    ```
+2. Run `test_dataset.py` or `train_dataset.py` (modify `TEST_DATASET_SIZE` and `TRAIN_DATASET_SIZE` before running if needed) to generate new dataset for training and testing (if necessary)
+  ```
+  python3 test_dataset.py
+  python3 train_dataset.py
+    ```
+3. Build the model
+  ```
+  python3 tensor.py
+  ```
+
 ## Versioning
-For the versions available, see module's `__version__`
+For the versions available, see module's `__version__`.
 
 ## Author
 * **Duy Cao** - [caominhduy](https://github.com/caominhduy/)
@@ -156,4 +171,4 @@ This project is licensed under the MIT License - see the LICENSE.txt file for mo
 
 ## Machine Learning in-a-nutshell
 ![How Machines Learn – CGP Grey](https://i.ibb.co/HGScMfv/IMG-5205.png)
-[This video by CGP Grey on Youtube](https://youtu.be/6g4O5UOH304) is very fun, straightforward and informative (especially for those who are new or those who are trying to explain to someone who are new)
+[This video by CGP Grey on Youtube](https://youtu.be/6g4O5UOH304) is very fun, straightforward and informative (especially for those who are new or those who are trying to explain to someone who are new.)
