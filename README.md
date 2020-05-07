@@ -87,9 +87,9 @@ _GitHub Markdown forces the first row to be header, so please ignore the boldnes
   - **Reversed notations** and **repeated notations** are just 6 basic notations after 3 & 2 basic rotations, subsequently.
   - In real life, the rubik professionals (in competitions) may have more moves than these 18 basic moves, those are technically the same but only faster.
   - These 18 notations, human-friendly, are written as:
-  | U, L, R, D, F, B  | U', L', R', D', F', B'  |  U2, L2, R2, D2, F2, B2 |
-  |---|---|---|
-  |  Rotating specific side 90º clockwisely   |  Rotating specific side 90º **counterclockwisely**  |Rotating specific side 180º |
+  | U, L, R, D, F, B                         | U', L', R', D', F', B'                              |  U2, L2, R2, D2, F2, B2          |
+  |------------------------------------------|-----------------------------------------------------|-----------------------------------|
+  |  Rotating specific side 90º clockwisely  |  Rotating specific side 90º **counterclockwisely**  |  Rotating specific side 180º |
 
 * `rotating_notations` decides the values for the last column in the datasets (addressed later).
 
