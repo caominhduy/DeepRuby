@@ -144,18 +144,18 @@ _At this point, the training provides only approximately 10% of accuracy on test
 
 ## Running
 1. Modify `RUBIK_SIZE` in `basics.py`
-   ```
-    RUBIK_SIZE = 2 # example rubik 2x2x2
-    ```
+```
+RUBIK_SIZE = 2 # example rubik 2x2x2
+```
 2. Run `test_dataset.py` or `train_dataset.py` (modify `TEST_DATASET_SIZE` and `TRAIN_DATASET_SIZE` before running if needed) to generate new dataset for training and testing (if necessary)
-  ```
-  python3 test_dataset.py
-  python3 train_dataset.py
-    ```
+```
+python3 test_dataset.py
+python3 train_dataset.py
+```
 3. Build the model
-  ```
-  python3 tensor.py
-  ```
+```
+python3 tensor.py
+```
 
 ## Versioning
 For the versions available, see module's `__version__`.
