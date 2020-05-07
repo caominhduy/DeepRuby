@@ -12,6 +12,11 @@ __version__ = '20.5.3'
 
 RUBIK_SIZE = 2  # means 2x2x2 rubik cube, modify this to change the size
 
+AVAILABLE_ROTATIONS = ['l', 'u', 'r', 'b', 'f', 'd', \
+                        'l2', 'u2', 'r2', 'b2', 'f2', 'd2', \
+                        'lr', 'ur', 'rr', 'br', 'fr', 'dr']
+
+
 def total_combinations(x):  # We assume that there is no rubik cube with size <= 1
     a = math.factorial(7)*3**6
     b = (24*2**10*math.factorial(12))**(x%2)
