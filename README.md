@@ -123,7 +123,7 @@ This module generates dataset for testing. Many functions are also applicable fo
 
 * `generator` takes similar parameters as touch, generates new states by doing random rotations and writing them into the new dataset.
 
-The row in a 2x2x2 rubik dataset looks like this:
+A row in a 2x2x2 rubik dataset looks like this:
 
   | b | b | b | b | r | r | o | o | y | y | w | w | o | o | r | r | w | w | y | y | g | g | g | g | top-twice |
   |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
