@@ -8,7 +8,7 @@ from dependencies import *
 from colorama import Fore, Back, Style
 
 __author__ = 'Duy Cao'
-__version__ = '20.5.3'
+__version__ = '20.5.7'
 
 RUBIK_SIZE = 2  # means 2x2x2 rubik cube, modify this to change the size
 

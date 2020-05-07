@@ -14,7 +14,7 @@ from shutil import copy as shucopy
 __author__ = 'Duy Cao'
 __version__ = '2020.5.5'
 
-TEST_DATASET_SIZE = 1000 # notice that the final dataset may be smaller
+TEST_DATASET_SIZE = 100 # notice that the final dataset may be smaller
                          # after duplicate_removal
 AVAILABLE_ROTATIONS = ['l', 'u', 'r', 'b', 'f', 'd', \
                         'l2', 'u2', 'r2', 'b2', 'f2', 'd2', \

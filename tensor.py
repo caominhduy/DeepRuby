@@ -1,6 +1,6 @@
 """
 Credits:
-    - Some LOCs were modified from TensorFlow's Tutorial Documentation
+    - Few LOCs were copied and modified from TensorFlow's Tutorial Documentation
 """
 
 import numpy as np
@@ -12,7 +12,6 @@ from datetime import datetime
 from dependencies import *
 from basics import *
 import random as rd
-from time import time
 from shutil import copy as shucopy
 from train_dataset import TRAIN_DATASET_SIZE
 from test_dataset import *
@@ -28,8 +27,6 @@ ROTATIONAL_DICT = {'left': 0, 'right': 1, 'top': 2, 'bottom': 3, 'front': 4, 'ba
     'left-reversed': 6, 'right-reversed': 7, 'top-reversed': 8, 'bottom-reversed': 9,\
     'front-reversed': 10, 'back-reversed': 11, 'left-twice': 12, 'right-twice': 13,\
     'top-twice': 14, 'bottom-twice': 15, 'front-twice': 16, 'back-twice': 17}
-
-start = time()
 
 train_dataset_path = get_latest_file('datasets/train/' + str(RUBIK_SIZE))
 test_dataset_path = get_latest_file('datasets/test/' + str(RUBIK_SIZE))
@@ -89,19 +86,20 @@ ds_train, ds_test = read_dataset_from_dataframe()
 for feat, targ in ds_train.take(5):
     print(f'Features: {feat}, Target: {targ}')
 
-for feat in ds_train.take(5):
-    print(feat)
+#for feat in ds_train.take(5):
+#    print(feat)
 
 def get_compiled_model():
   model = tf.keras.Sequential([
-    tf.keras.layers.Dense(100, activation='sigmoid'),
+    tf.keras.layers.Dense(1000, activation='sigmoid'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(1000, activation='sigmoid'),
     tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(100, activation='softmax'),
-    tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(1)
   ])
 
-  model.compile(optimizer='nadam',
+  model.compile(optimizer='rmsprop',
                 loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False),
                 metrics=['accuracy'])
   return model
@@ -111,4 +109,4 @@ model.fit(ds_train, epochs=2)
 
 test_loss, test_accuracy = model.evaluate(ds_test)
 
-print('\n\nTest Loss {}, Test Accuracy {}'.format(test_loss, test_accuracy))
+print(f'\n\nTest Loss {test_loss}, Test Accuracy {test_accuracy}')
