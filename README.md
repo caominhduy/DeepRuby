@@ -123,7 +123,11 @@ This module generates dataset for testing. Many functions are also applicable fo
 
 * `generator` takes similar parameters as touch, generates new states by doing random rotations and writing them into the new dataset.
 
-The row in dataset looks something like this:
+The row in a 2x2x2 rubik dataset looks like this:
+
+  | b | b | b | b | r | r | o | o | y | y | w | w | o | o | r | r | w | w | y | y | g | g | g | g | top-twice |
+  |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
 
 ### **`train_dataset.py`**
 This module is very similar to previous module. Review `test_dataset.py` if needed.
@@ -173,4 +177,4 @@ This project is licensed under the MIT License - see the LICENSE.txt file for mo
 
 ## Machine Learning in-a-nutshell
 ![How Machines Learn – CGP Grey](https://i.ibb.co/HGScMfv/IMG-5205.png)
-[This video by CGP Grey on Youtube](https://youtu.be/6g4O5UOH304) is very fun, straightforward and informative (especially for those who are new or those who are trying to explain to someone who are new.)
+[This video by CGP Grey on Youtube](https://youtu.be/R9OHn5ZF4Uo) is very fun, straightforward and informative (especially for those who are new or those who are trying to explain to someone who are new.)
