@@ -10,7 +10,7 @@ A rubik solver that uses machine learning and she may be smart.
 2. This project is still in development, the accuracy at the moment may not satisfy your expectation. All pull requests and comments are very welcomed!
 
 ## Getting Started
-Here you will find the answers to the questions What, Which, Why, and How to install this project on your local machine (and avoid unnecessary panic and scream.)
+Here you will find the answers to the questions What, Which, Why, and How to install and run this project on your local machine.
 
 ### About This Project
 Rubik cube was created in 1970, yet still, it has been one of the most famous logical toys since then. Every cube has many different permutations or so-called different states. The number of these varies by the types of cube: whereas a 2x2x2 rubik cube has 3,674,160 different states, the 3x3x3 has up to 43,252,003,274,489,856,000 permutations!
