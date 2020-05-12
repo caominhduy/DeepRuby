@@ -69,7 +69,7 @@ In this part, we discuss the scripts in details.
 ### **`basics.py`**
 This file works as the frame of the project. _(And it is surprisingly tedious!)_
 
-* `RUBIK_SIZE` **decides the dimension of rubik cube** _(i.e. 3x3x3 rubik cube is 3)_. It is **the most important constant** since it is very universal. You can change this constant to change the behavior of entire packet.
+* `RUBIK_SIZE` **decides the dimension of rubik cube** _(i.e. 3x3x3 rubik cube is 3)_. It is **the most important constant** since it is very universal. You can change this constant to change the behavior of entire project.
 * `init_cube` takes **RUBIK_SIZE** and creates an complete (solved) rubik cube as an array of 6 multidimensional numpy array (each one is equivalent to a side of a rubik cube)
   - For example: a rubik 3x3x3 should look like this
 
