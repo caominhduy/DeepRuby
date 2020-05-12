@@ -19,7 +19,7 @@ import functools
 import pandas as pd
 
 __author__ = 'Duy Cao'
-__version__ = '2020.5.7'
+__version__ = '2020.5.12'
 
 COLORS_DICT = {'b': 0, 'o': 1, 'w': 2, 'r': 3, 'y': 4, 'g': 5}
 
@@ -31,6 +31,11 @@ ROTATIONAL_DICT = {'left': 0, 'right': 1, 'top': 2, 'bottom': 3, 'front': 4, 'ba
 train_dataset_path = get_latest_file('datasets/train/' + str(RUBIK_SIZE))
 test_dataset_path = get_latest_file('datasets/test/' + str(RUBIK_SIZE))
 
+def model_saves_touch(path): # path to saved models
+    if not os.path.exists('models'):
+        os.mkdir('models')
+    if not os.path.exists('models/' + path):
+        os.mkdir('models/' + path)
 
 def get_column_name(size): # get column names for datasets (because top rows do not)
     columns = []
@@ -86,9 +91,6 @@ ds_train, ds_test = read_dataset_from_dataframe()
 for feat, targ in ds_train.take(5):
     print(f'Features: {feat}, Target: {targ}')
 
-#for feat in ds_train.take(5):
-#    print(feat)
-
 def get_compiled_model():
   model = tf.keras.Sequential([
     tf.keras.layers.Dense(1000, activation='sigmoid'),
@@ -106,7 +108,27 @@ def get_compiled_model():
 
 model = get_compiled_model()
 model.fit(ds_train, epochs=2)
-
 test_loss, test_accuracy = model.evaluate(ds_test)
+print(f'\nTest Loss {test_loss}, Test Accuracy {test_accuracy}')
 
-print(f'\n\nTest Loss {test_loss}, Test Accuracy {test_accuracy}')
+# Save as new model
+model_saves_touch(str(RUBIK_SIZE))
+path = 'models/' + str(RUBIK_SIZE) + '/' + datetime_() + '.h5'
+model.save(path)
+
+
+# PREDICTION AREA
+
+new_input = input('Enter rubik combination\n ') # Read user input for sample permutation
+test_array = np.asarray(list(new_input))
+new_test_array = []
+for x in test_array: # convert permutation into integer encoded array
+    v = COLORS_DICT[x]
+    new_test_array.append(v)
+output = model.predict(np.array(new_test_array))[0]
+prediction = tf.sigmoid(output).numpy()
+prediction_human_friendly = ''
+for k, v in ROTATIONAL_DICT.items():
+    if v == int(prediction):
+        prediction_human_friendly = k
+print(f'The previous turn to that was probably: {prediction_human_friendly}')

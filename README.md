@@ -1,9 +1,10 @@
 # DeepRuby
-A rubik solver that uses machine learning and she will be smart (not yet!)
+A rubik solver that uses machine learning and she may be smart.
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/caominhduy/DeepRuby/blob/master/LICENSE.txt)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/caominhduy/DeepRuby/LICENSE.txt)
 
+![Diagram](https://i.ibb.co/m56zqDY/Deep-Ruby-schematic.png)
 ## Disclaimer
 1. DeepRuby is written in Mac environment with Python 3.7.1 and TensorFlow 2.1.0 installed, acceptance tests for others have not been done.
 2. This project is still in development, the accuracy at the moment may not satisfy your expectation. All pull requests and comments are very welcomed!
@@ -37,6 +38,8 @@ DeepRuby/
 |   |- test/
 |   |- train/
 |
+|- models/
+|
 |- recycle/
 |
 |- basics.py
@@ -55,10 +58,11 @@ DeepRuby/
   * `basics.py` has basic functions and mechanics to frame the rubik cube.
   * `dependencies.py` has few important functions.
   * `test_dataset.py` and `train_dataset.py` are run to generate datasets for training and validating (their details are discussed later).
-  * `tensor.py` does all the training and testing.
+  * `tensor.py` does all the training and evaluating.
 
+4. `models` stores the built models.
 
-4. `recycle` is a graveyard of dead modules and dead codes. Let's not wasting our time reading them (well, you read it, but then I will feel guilty for not explaining, so I mean **"our time"**).
+4. `recycle` is a graveyard of dead modules and dead codes. Let's not waste our time reading them again.
 
 ## Understanding
 In this part, we discuss the scripts in details.
@@ -80,7 +84,7 @@ This file works as the frame of the project. _(And it is surprisingly tedious!)_
   |   |   |   | g | g | g |   |   |   |   |   |   |
   |   |   |   | g | g | g |   |   |   |   |   |   |
 
-_GitHub Markdown forces the first row to be header, so please ignore the boldness of the top 3 blues_
+_GitHub Markdown forces the first row to be header, so please ignore the boldness of the top line_
 
 * `turn` takes 2 arguments: one available rotation and current rubik cube multidimensional array. It returns the new state after rotation.
   - This is the most tedious part in this repo.
@@ -123,7 +127,7 @@ This module generates dataset for testing. Many functions are also applicable fo
 
 * `generator` takes similar parameters as touch, generates new states by doing random rotations and writing them into the new dataset.
 
-A row in a 2x2x2 rubik dataset looks like this:
+The row in a 2x2x2 rubik dataset looks like this:
 
   | b | b | b | b | r | r | o | o | y | y | w | w | o | o | r | r | w | w | y | y | g | g | g | g | top-twice |
   |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -144,9 +148,11 @@ This module is very similar to previous module. Review `test_dataset.py` if need
 
 * `y_train` and `y_test` are the last column in the dataset (used for labelling dataset in the pipeline to tensor, see `read_dataset_from_dataframe`.)
 
+_For more details of `tensor.py`, please see source code_
+
 ![Screen-Shot-2020-05-07-at-8-32-41-AM](https://i.ibb.co/Nnbz6D4/Screen-Shot-2020-05-07-at-8-32-41-AM.png)
 
-_At this point, the training provides only approximately 10% of accuracy on test dataset. Improvements are on-the-way._
+_At this point, the training provides only approximately 10% of accuracy on test dataset. There must be some solution..._
 
 ## Running
 1. Modify `RUBIK_SIZE` in `basics.py`
@@ -162,6 +168,8 @@ python3 train_dataset.py
 ```
 python3 tensor.py
 ```
+4. Enter a combination for prediction
+
 
 ## Versioning
 For the versions available, see module's `__version__`.
@@ -173,8 +181,8 @@ For the versions available, see module's `__version__`.
 * Special thanks to TensorFlow's Official Tutorial and API Documentation.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.txt file for more details
+This project is licensed under the MIT License - see the `LICENSE.txt` file for more details
 
 ## Machine Learning in-a-nutshell
 ![How Machines Learn – CGP Grey](https://i.ibb.co/HGScMfv/IMG-5205.png)
-[This video by CGP Grey on Youtube](https://youtu.be/R9OHn5ZF4Uo) is very fun, straightforward and informative (especially for those who are new or those who are trying to explain to someone who are new.)
+[This video by CGP Grey on Youtube](https://youtu.be/R9OHn5ZF4Uo) is very fun and straightforward about machine learning.
